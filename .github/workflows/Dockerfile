@@ -1,3 +1,3 @@
 FROM alpine
 
-RUN apk update
+RUN apk update && apk add bash
