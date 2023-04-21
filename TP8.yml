@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  db:
+    image: my-mariadb-image
+    restart: always
+    environment:
+      MYSQL_DATABASE: my_database
+    secrets:
+      - db_credentials
+    ports:
+      - "3306:3306"
+
+secrets:
+  db_credentials:
+    file: ./secret.env

@@ -1,0 +1,6 @@
+FROM alpine:latest
+
+COPY tp7.sh /tp7.sh
+RUN chmod +x /tp7.sh
+
+ENTRYPOINT ["/tp7.sh"]

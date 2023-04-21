@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  target:
+    image: alpine
+    volumes:
+      - ./shared:/shared
+    command: sh -c "echo 'heyo' > /shared/fichier.txt && /usr/sbin/sshd && tail -f /dev/null"
+    ports:
+      - "2222:22"
+
+  rsync:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./shared:/shared
+    command: rsync /shared/fichier.txt /app/
